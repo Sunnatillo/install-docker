@@ -24,13 +24,7 @@
 
         - name: Install docker
           apt: name={{ item }} state=latest update_cache=yes
-          loop: [ 'docker-ce', 'docker-ce-cli', 'containerd.io' ]
-
-        - name: Restart docker systemd service
-          service:
-            name: docker
-            state: restarted
-            daemon_reload: yes
+          loop: [ 'containerd.io' ]
 
         - name: Add current user to the docker group
           user:
